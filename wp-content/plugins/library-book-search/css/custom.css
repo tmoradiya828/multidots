@@ -1,0 +1,248 @@
+#filter .row .col-6 {
+  float: left;
+  width: 50%;
+  padding: 10px; 
+}
+
+#filter .row .col-12 {
+  float: left;
+  width: 100%;
+  padding: 10px; 
+}
+
+
+#filter .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+#filter label {
+    /* Other styling... */
+    text-align: right;
+    clear: both;
+    float:left;
+    margin-right:15px;
+}
+
+#filter input {
+ height: 20px;
+ width: 300px;
+ border: 1px solid #000;
+ margin-top: 10px;
+ float: left;
+}
+#example{
+  width: 100%;
+  text-align: center;
+}
+.checked {
+  color: orange;
+}
+
+#example_filter{
+  display: none;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  width:300px;
+  float: left;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: #cd2653;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 0px 10px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #cd2653;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+// Base Colors
+$shade-10: #2c3e50 !default;
+$shade-1: #d7dcdf !default;
+$shade-0: #fff !default;
+$teal: #1abc9c !default;
+
+
+// Reset
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font-family: sans-serif;
+  padding: 60px 20px;
+  
+  @media (min-width: 600px) {
+    padding: 60px;
+  }
+}
+
+
+
+
+// Range Slider
+$range-width: 100% !default;
+
+$range-handle-color: $shade-10 !default;
+$range-handle-color-hover: $teal !default;
+$range-handle-size: 20px !default;
+
+$range-track-color: $shade-1 !default;
+$range-track-height: 10px !default;
+
+$range-label-color: $shade-10 !default;
+$range-label-width: 60px !default;
+
+.range-slider {
+  width: $range-width;
+}
+
+.range-slider__range {
+  -webkit-appearance: none;
+  width: calc(100% - (#{$range-label-width + 13px}));
+  height: $range-track-height;
+  border-radius: 5px;
+  background: $range-track-color;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  &:active::-webkit-slider-thumb {
+    background: $range-handle-color-hover;
+  }
+
+  &::-moz-range-thumb {
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border: 0;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  &:active::-moz-range-thumb {
+    background: $range-handle-color-hover;
+  }
+  
+  // Focus state
+  &:focus {
+    
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 3px $shade-0,
+                  0 0 0 6px $teal;
+    }
+  }
+}
+
+
+// Range Label
+.range-slider__value {
+  display: inline-block;
+  position: relative;
+  width: $range-label-width;
+  color: $shade-0;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: $range-label-color;
+  padding: 5px 10px;
+  margin-left: 8px;
+
+  &:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid $range-label-color;
+    border-bottom: 7px solid transparent;
+    content: '';
+  }
+}
+
+
+// Firefox Overrides
+::-moz-range-track {
+    background: $range-track-color;
+    border: 0;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer { 
+  border: 0; 
+}
